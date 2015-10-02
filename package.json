@@ -1,0 +1,38 @@
+{
+  "name": "loopback-sdk-ios-codegen",
+  "version": "0.0.0",
+  "description": "Tool for auto-generating iOS client source code for LoopBack App",
+  "keywords": [ "StrongLoop Labs", "LoopBack", "client", "SDK", "iOS", "codegen" ],
+  "bin": {
+    "lb-ios": "bin/lb-ios"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strongloop/loopback-sdk-ios-codegen.git"
+  },
+  "author": {
+    "name": "StrongLoop, Inc.",
+    "email": "callback@strongloop.com",
+    "url": "http://strongloop.com/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strongloop/loopback-sdk-ios-codegen/issues"
+  },
+  "dependencies": {
+    "ejs": "^1.0",
+    "optimist": "^0.6",
+    "mkdirp": "^0.3",
+    "pascal-case": "^1.1",
+    "semver": "^2.3"
+  },
+  "devDependencies": {
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "loopback": "^2.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^2.1.0",
+    "loopback-datasource-juggler": "^2.39.0",
+    "serve-favicon": "^2.0.1"
+  }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>39C4E598-D3BD-4126-B9A5-7D7F49BCBA55</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CodeGenTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0E02AAB365A99B3B020C69078BE4C91CC9B74EFB</key>
+		<string>github.com:hideya/loopback-sdk-ios-codegen.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>test-env/CodeGenTest/CodeGenTest.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0E02AAB365A99B3B020C69078BE4C91CC9B74EFB</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:hideya/loopback-sdk-ios-codegen.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0E02AAB365A99B3B020C69078BE4C91CC9B74EFB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0E02AAB365A99B3B020C69078BE4C91CC9B74EFB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>loopback-sdk-ios-codegen</string>
+		</dict>
+	</array>
+</dict>
+</plist>
