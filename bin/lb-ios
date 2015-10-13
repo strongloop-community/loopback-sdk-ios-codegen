@@ -1,0 +1,85 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var path = require('path');
+var semver = require('semver');
+var mkdirp = require('mkdirp');
+var optimist = require('optimist');
+
+// var generator = require(loopback-sdk-ios-codegen);
+var generator = require('../lib/objc-codegen');
+
+var argv = optimist
+  .usage('Generate iOS Objective-C client code for your LoopBack application.' +
+    '\nUsage:' +
+    '\n    $0 [options] path-to-app ios-client-dir-path' +
+    '\n' +
+    '\nExample:' +
+    '\n    $0 -p XX server/app.js client/ios/gen-src')
+  .describe('p', 'The prefix for generated iOS object names.')
+  .default('p', '')
+  .alias({ p: 'model-name-prefix' })
+  .describe('v', 'Print more info about the progress.')
+  .alias({ v: 'verbose' })
+  .demand(2)
+  .argv;
+
+try {
+  var appFile = path.resolve(argv._[0]);
+  var clientDir = path.resolve(argv._[1]);
+  var modelPrefix = argv['model-name-prefix'];
+  var verbose = argv['verbose'];
+
+  console.error('Loading LoopBack app %j', appFile);
+  var app = require(appFile);
+  assertLoopBackVersion(app);
+
+  console.error('Generating iOS models with prefix %j', modelPrefix);
+  var files = generator.objcModels(app, modelPrefix);
+
+  if (!fs.existsSync(clientDir)){
+    mkdirp.mkdirP.sync(clientDir);
+  }
+
+  for (var objcFileName in files) {
+    var filepath = path.resolve(clientDir, objcFileName);
+    console.log('Writing: ' + filepath);
+    if (verbose) {
+      console.error('--');
+      console.error(files[objcFileName]);
+      console.error('--\n');
+    }
+    fs.writeFileSync(filepath, files[objcFileName]);
+  }
+  
+  console.error('Done\n');
+}
+catch(err) {
+  console.error('\nERROR: ' + err.message + '\n');
+  if (verbose) {
+    console.error(err.stack);
+  }
+}
+
+// The app.js scaffolded by `slc lb project` loads strong-agent module that
+// used to have a bug where it prevented the application from exiting.
+// To work around that issue, we are explicitly exiting here.
+//
+// The exit is deferred to the next tick in order to prevent the Node bug:
+// https://github.com/joyent/node/issues/3584
+process.nextTick(function() {
+  process.exit();
+});
+
+//--- helpers ---//
+
+function assertLoopBackVersion(app) {
+  // app.loopback property was added before v2.0.0.
+  // If app.loopback is undefined, then it's an unsupported version.
+  if (typeof app.loopback === 'undefined' || semver.lt(app.loopback.version, '2.0.0')) {
+    throw new Error('LoopBack version too old\n' +
+      'The code generator does not support applications based\n' +
+      'on LoopBack versions older than 2.0.0. Please upgrade your\n' +
+      'project to a recent version of LoopBack and run this tool again.\n');
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "book",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "totalPages": {
+      "type": "number",
+      "required": true
+    },
+    "hardcover": {
+      "type": "boolean",
+      "required": true
+    },
+    "keywords": {
+      "type": [
+        "string"
+      ],
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
