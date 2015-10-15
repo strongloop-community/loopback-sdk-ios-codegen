@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/strongloop/loopback-sdk-ios-codegen/issues"
   },
+  "scripts": {
+    "test": "echo see test steps in README.md"
+  },
   "dependencies": {
     "ejs": "^1.0",
     "optimist": "^0.6",
