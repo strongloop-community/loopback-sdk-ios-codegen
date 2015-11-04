@@ -17,7 +17,9 @@ The following is an example of the usage applied to the test server provided und
 After performing the above steps, run the followings:
 
  1. Run the test server by `node test-env/server/server.js &`.
- *  Copy `LoopBack.framework` into `test-env/CodeGenTest/`.
+ *  Copy `LoopBack.framework` into `test-env/CodeGenTest/`,
+    where `LoopBack.framework` is the one generated from 
+    the latest [iOS SDK](https://github.com/strongloop/loopback-sdk-ios).
  *  Start xcode from `test-env/CodeGenTest/CodeGenTest.xcodeproj`.
  *  Run the CodeGenTests unit tests.
 
