@@ -1,0 +1,30 @@
+#!/bin/bash
+set -ex
+trap 'kill $(jobs -p)' EXIT
+
+# initialize the tool `bin/lb-ios` and the test server under `test-env/server`
+npm install
+
+# generate the models in Objective-C representation
+bin/lb-ios -v -p XX test-env/server/server test-env/client/ios/CodeGenTest/gen-src
+
+# run the test server
+node test-env/server/server.js &
+
+cd test-env/client/ios/CodeGenTest
+
+# setup the test environment
+pod install
+
+# record the build environment
+xcodebuild -version
+xcodebuild -showsdks
+instruments -s devices
+
+# compile and run the unit tests
+xcodebuild \
+    -workspace CodeGenTest.xcworkspace \
+    -scheme CodeGenTest \
+    -sdk iphonesimulator \
+    -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=latest' \
+    clean test
