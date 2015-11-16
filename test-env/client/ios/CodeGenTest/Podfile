@@ -1,0 +1,10 @@
+platform :ios, '6.1'
+
+pod 'LoopBack', :git => 'https://github.com/strongloop/loopback-sdk-ios'
+
+# The following is a workaround to make LoopBack.h visible to the test target files.
+target :CodeGenTestTests, :exclusive => true do
+    # The following pod is not used by CodeGenTest, but we need something here
+    # to ensure that LoopBack.h becomes visible to the test files.
+    pod 'OCHamcrest'
+end

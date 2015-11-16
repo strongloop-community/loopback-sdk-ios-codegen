@@ -1,9 +1,8 @@
 //
-//  BookTest.m
-//  ios-codegen-test
+//  CodeGenTestTests.m
+//  CodeGenTestTests
 //
-//  Created by hideya kawahara on 2015/08/21.
-//
+//  Copyright (c) 2015 StrongLoop. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +11,27 @@
 #import "XXBook.h"
 #import "XXBookRepository.h"
 
-@interface BookTest : XCTestCase
+
+// The following is a workaround to run the unit tests on Xcode 5 that doesn't have support
+// for XCTestExpectation.  To be removed once CI is updated to use Xcode 6 or later.
+#undef ASYNC_TEST_START
+#undef ASYNC_TEST_END
+#undef ASYNC_TEST_SIGNAL
+#undef ASYNC_TEST_FAILURE_BLOCK
+
+#define ASYNC_TEST_START dispatch_semaphore_t sen_semaphore = dispatch_semaphore_create(0);
+#define ASYNC_TEST_END \
+while (dispatch_semaphore_wait(sen_semaphore, DISPATCH_TIME_NOW)) \
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+#define ASYNC_TEST_SIGNAL dispatch_semaphore_signal(sen_semaphore);
+#define ASYNC_TEST_FAILURE_BLOCK \
+^(NSError *error) { \
+    XCTFail(@"Test failed: %@", error.description); \
+    ASYNC_TEST_SIGNAL \
+}
+
+
+@interface CodeGenTestTests : XCTestCase
 
 @property (nonatomic, strong) LBRESTAdapter *adapter;
 @property (nonatomic, strong) XXBookRepository *repository;
@@ -34,7 +53,7 @@ static NSInteger anotherBookTotalPages = 352;
 static NSNumber *createdId;
 
 
-@implementation BookTest
+@implementation CodeGenTestTests
 
 /**
  * Create the default test suite to control the order of test methods
@@ -232,7 +251,8 @@ static NSNumber *createdId;
     ASYNC_TEST_START
     [self.repository updateAllWithWhereFilter:@{ @"title": altBookTitle }
                                          data:bookOrig
-                                      success:^() {
+                                      success:^(NSDictionary *dictionary) {
+        XCTAssertTrue(dictionary.count > 0, @"No model updated");
         [self.repository findById:createdId success:^(XXBook *book) {
             XCTAssertNotNil(book, @"No model found");
             XCTAssertEqualObjects(book.title, bookTitle, @"Invalid title");

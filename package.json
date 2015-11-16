@@ -20,7 +20,7 @@
     "url": "https://github.com/strongloop/loopback-sdk-ios-codegen/issues"
   },
   "scripts": {
-    "test": "echo see test steps in README.md"
+    "test": "test-env/bin/run-unittests"
   },
   "dependencies": {
     "ejs": "^1.0",
