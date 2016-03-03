@@ -23,8 +23,10 @@ instruments -s devices
 
 # compile and run the unit tests
 xcodebuild \
-    -workspace CodeGenTest.xcworkspace \
-    -scheme CodeGenTest \
-    -sdk iphonesimulator \
-    -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=latest' \
-    clean test
+  -verbose \
+  -workspace CodeGenTest.xcworkspace \
+  -scheme CodeGenTest \
+  -sdk iphonesimulator \
+  -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=latest' \
+  ${XCODEBUILD_ARGS} \
+  clean test

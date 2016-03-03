@@ -12,13 +12,8 @@
 #import "XXBookRepository.h"
 
 
-// The following is a workaround to run the unit tests on Xcode 5 that doesn't have support
+// The followings are utilities to run the asynchronous unit tests on Xcode 5 that doesn't have support
 // for XCTestExpectation.  To be removed once CI is updated to use Xcode 6 or later.
-#undef ASYNC_TEST_START
-#undef ASYNC_TEST_END
-#undef ASYNC_TEST_SIGNAL
-#undef ASYNC_TEST_FAILURE_BLOCK
-
 #define ASYNC_TEST_START dispatch_semaphore_t sen_semaphore = dispatch_semaphore_create(0);
 #define ASYNC_TEST_END \
 while (dispatch_semaphore_wait(sen_semaphore, DISPATCH_TIME_NOW)) \
@@ -40,15 +35,15 @@ while (dispatch_semaphore_wait(sen_semaphore, DISPATCH_TIME_NOW)) \
 
 static NSString *bookTitle = @"The Hitchhiker's Guide to the Galaxy";
 static NSString *bookAuthoer = @"Douglas Adams";
-static NSInteger bookTotalPages = 224;
+static NSNumber *bookTotalPages;
 static NSArray *bookKeywords;
 
 static NSString *altBookTitle = @"Mostly Harmless";
-static NSInteger altBookTotalPages = 240;
+static NSNumber *altBookTotalPages;
 
 static NSString *anotherBookTitle = @"A Farewell To Arms";
 static NSString *anotherBookAuthoer = @"Ernest Hemingway";
-static NSInteger anotherBookTotalPages = 352;
+static NSNumber *anotherBookTotalPages;
 
 static NSNumber *createdId;
 
@@ -82,6 +77,9 @@ static NSNumber *createdId;
     self.adapter = [LBRESTAdapter adapterWithURL:[NSURL URLWithString:@"http://localhost:3010/api"]];
     self.repository = (XXBookRepository*)[self.adapter repositoryWithClass:[XXBookRepository class]];
 
+    bookTotalPages = @224;
+    altBookTotalPages = @240;
+    anotherBookTotalPages = @352;
     bookKeywords = @[ @"novel", @"sci-fi", @"comedy" ];
 }
 
@@ -123,7 +121,7 @@ static NSNumber *createdId;
         XCTAssertNotNil(book, @"No model found");
         XCTAssertEqualObjects(book.title, bookTitle, @"Invalid title");
         XCTAssertEqualObjects(book.author, bookAuthoer, @"Invalid author");
-        XCTAssertEqual(book.totalPages, bookTotalPages, @"Invalid totalPages");
+        XCTAssertEqualObjects(book.totalPages, bookTotalPages, @"Invalid totalPages");
         XCTAssertEqual(book.hardcover, YES, @"Invalid hardcover property");
         XCTAssertEqualObjects(book.keywords, bookKeywords, @"Invalid keywords");
         ASYNC_TEST_SIGNAL
@@ -159,16 +157,16 @@ static NSNumber *createdId;
             XCTAssertNotNil(books, @"No models returned.");
             XCTAssertTrue([books count] >= 2, @"Invalid # of models returned: %lu", (unsigned long)[books count]);
             for (int i = 0; i < books.count; i++) {
-                XCTAssertTrue([[books[i] class] isSubclassOfClass:[XXBook class]], @"Invalid class.");
+                XCTAssertTrue([books[i] isMemberOfClass:[XXBook class]], @"Invalid class.");
                 XXBook *book = books[i];
                 if ([book.title isEqualToString:bookTitle] &&
                     [book.author isEqualToString:bookAuthoer] &&
-                     book.totalPages == bookTotalPages) {
+                     book.totalPages.integerValue == bookTotalPages.integerValue) {
                     foundBook1 = YES;
                 }
                 if ([book.title isEqualToString:anotherBookTitle] &&
                     [book.author isEqualToString:anotherBookAuthoer] &&
-                     book.totalPages == anotherBookTotalPages) {
+                     book.totalPages.integerValue == anotherBookTotalPages.integerValue) {
                     foundBook2 = YES;
                 }
             }
@@ -187,7 +185,7 @@ static NSNumber *createdId;
         XCTAssertNotNil(books, @"No models returned.");
         XCTAssertTrue([books count] >= 1, @"Invalid # of models returned: %lu", (unsigned long)[books count]);
         for (int i = 0; i < books.count; i++) {
-            XCTAssertTrue([[books[i] class] isSubclassOfClass:[XXBook class]], @"Invalid class.");
+            XCTAssertTrue([books[i] isMemberOfClass:[XXBook class]], @"Invalid class.");
             XXBook *book = books[i];
             XCTAssertEqualObjects(book.title, bookTitle, @"Invalid title");
         }
@@ -229,7 +227,7 @@ static NSNumber *createdId;
                 XCTAssertNotNil(bookAlt, @"No book found with ID %@", createdId);
                 XCTAssertEqualObjects(bookAlt.title, altBookTitle, @"Invalid title");
                 XCTAssertEqualObjects(bookAlt.author, bookAuthoer, @"Invalid author");
-                XCTAssertEqual(bookAlt.totalPages, altBookTotalPages, @"Invalid totalPages");
+                XCTAssertEqualObjects(bookAlt.totalPages, altBookTotalPages, @"Invalid totalPages");
                 XCTAssertEqual(bookAlt.hardcover, NO, @"Invalid hardcover property");
                 XCTAssertEqualObjects(bookAlt.keywords, bookKeywords, @"Invalid keywords");
                 ASYNC_TEST_SIGNAL
@@ -257,7 +255,7 @@ static NSNumber *createdId;
             XCTAssertNotNil(book, @"No model found");
             XCTAssertEqualObjects(book.title, bookTitle, @"Invalid title");
             XCTAssertEqualObjects(book.author, bookAuthoer, @"Invalid author");
-            XCTAssertEqual(book.totalPages, bookTotalPages, @"Invalid totalPages");
+            XCTAssertEqualObjects(book.totalPages, bookTotalPages, @"Invalid totalPages");
             XCTAssertEqual(book.hardcover, YES, @"Invalid hardcover property");
             XCTAssertEqualObjects(book.keywords, bookKeywords, @"Invalid keywords");
             ASYNC_TEST_SIGNAL
@@ -268,8 +266,8 @@ static NSNumber *createdId;
 
 - (void)testCount {
     ASYNC_TEST_START
-    [self.repository countWithSuccess:^(NSInteger count) {
-        NSInteger prevCount = count;
+    [self.repository countWithSuccess:^(NSNumber *count) {
+        NSInteger prevCount = count.integerValue;
 
         // add one more book for testing
         XXBook *anotherBook = [self.repository modelWithDictionary:nil];
@@ -279,8 +277,8 @@ static NSNumber *createdId;
         anotherBook.hardcover = YES;
 
         [anotherBook saveWithSuccess:^{
-            [self.repository countWithSuccess:^(NSInteger count) {
-                XCTAssertTrue(count == prevCount + 1, @"Invalid # of models returned: %lu", count);
+            [self.repository countWithSuccess:^(NSNumber *count) {
+                XCTAssertTrue(count.integerValue == prevCount + 1, @"Invalid # of models returned: %@", count);
                 ASYNC_TEST_SIGNAL
             } failure:ASYNC_TEST_FAILURE_BLOCK];
         } failure:ASYNC_TEST_FAILURE_BLOCK];
@@ -291,8 +289,8 @@ static NSNumber *createdId;
 - (void)testCountWithWhereFilter {
     ASYNC_TEST_START
     [self.repository countWithWhereFilter:@{ @"title": anotherBookTitle }
-                                  success:^(NSInteger count) {
-        NSInteger prevCount = count;
+                                  success:^(NSNumber *count) {
+        NSInteger prevCount = count.integerValue;
 
         // add one more book for testing
         XXBook *anotherBook = [self.repository modelWithDictionary:nil];
@@ -303,8 +301,8 @@ static NSNumber *createdId;
 
         [anotherBook saveWithSuccess:^{
             [self.repository countWithWhereFilter:@{ @"title": anotherBookTitle }
-                                          success:^(NSInteger count) {
-                XCTAssertTrue(count == prevCount + 1, @"Invalid # of models returned: %lu", count);
+                                          success:^(NSNumber *count) {
+                XCTAssertTrue(count.integerValue == prevCount + 1, @"Invalid # of models returned: %@", count);
                 ASYNC_TEST_SIGNAL
             } failure:ASYNC_TEST_FAILURE_BLOCK];
         } failure:ASYNC_TEST_FAILURE_BLOCK];
