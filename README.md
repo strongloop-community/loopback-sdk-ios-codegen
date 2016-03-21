@@ -16,10 +16,10 @@ The following is an example usage applied to the test server provided under this
 
 After performing the above steps, run the followings:
 
- 1. Run the test server by `node test-env/server/server.js &`.
- *  `cd` into `test-env/client/ios/CodeGenTest`.
- *  Setup the test environment using **CocoaPods**: `pod install`.
- *  Start xcode from `CodeGenTest.xcworkspace`.
+ 1. `node test-env/server/server.js`
+ *  `cd test-env/client/ios/CodeGenTest`
+ *  `pod install`
+ *  `open CodeGenTest.xcworkspace`
  *  Run the CodeGenTestTests unit tests.
 
 
