@@ -2,7 +2,14 @@
   "name": "loopback-sdk-ios-codegen",
   "version": "0.0.0",
   "description": "Tool for auto-generating iOS client source code for LoopBack App",
-  "keywords": [ "StrongLoop Labs", "LoopBack", "client", "SDK", "iOS", "codegen" ],
+  "keywords": [
+    "StrongLoop Labs",
+    "LoopBack",
+    "client",
+    "SDK",
+    "iOS",
+    "codegen"
+  ],
   "bin": {
     "lb-ios": "bin/lb-ios"
   },
