@@ -24,6 +24,8 @@
 		898462101BF3382900FA4EB3 /* CodeGenTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8984620F1BF3382900FA4EB3 /* CodeGenTestTests.m */; };
 		89D180711BF342B5009DA31A /* XXBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D1806E1BF342B5009DA31A /* XXBook.m */; };
 		89D180721BF342B5009DA31A /* XXBookRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D180701BF342B5009DA31A /* XXBookRepository.m */; };
+		BF4364F978F22644BEB9DCCE /* libPods-CodeGenTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD9777B81D95B9EFF44DD98 /* libPods-CodeGenTestTests.a */; };
+		ECBFE83206414AFC021E44A3 /* libPods-CodeGenTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B159F59C97E00EF24FD8A2E /* libPods-CodeGenTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		255E0017A6332D06D39EF45A /* Pods-CodeGenTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeGenTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeGenTest/Pods-CodeGenTest.debug.xcconfig"; sourceTree = "<group>"; };
+		2FA36C7FBA2B392B48630FAD /* Pods-CodeGenTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeGenTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeGenTestTests/Pods-CodeGenTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		67D5C5EDCACDDE1429774492 /* Pods-CodeGenTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeGenTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CodeGenTestTests/Pods-CodeGenTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7387C899FC80CD8B5B2ACDAB /* Pods-CodeGenTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeGenTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-CodeGenTest/Pods-CodeGenTest.release.xcconfig"; sourceTree = "<group>"; };
 		898461DE1BF3382900FA4EB3 /* CodeGenTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeGenTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		898461E11BF3382900FA4EB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		898461E31BF3382900FA4EB3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,6 +67,8 @@
 		89D1806E1BF342B5009DA31A /* XXBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBook.m; sourceTree = "<group>"; };
 		89D1806F1BF342B5009DA31A /* XXBookRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBookRepository.h; sourceTree = "<group>"; };
 		89D180701BF342B5009DA31A /* XXBookRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBookRepository.m; sourceTree = "<group>"; };
+		8B159F59C97E00EF24FD8A2E /* libPods-CodeGenTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CodeGenTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD9777B81D95B9EFF44DD98 /* libPods-CodeGenTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CodeGenTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 				898461E41BF3382900FA4EB3 /* CoreGraphics.framework in Frameworks */,
 				898461E61BF3382900FA4EB3 /* UIKit.framework in Frameworks */,
 				898461E21BF3382900FA4EB3 /* Foundation.framework in Frameworks */,
+				ECBFE83206414AFC021E44A3 /* libPods-CodeGenTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +90,24 @@
 				898462041BF3382900FA4EB3 /* XCTest.framework in Frameworks */,
 				898462061BF3382900FA4EB3 /* UIKit.framework in Frameworks */,
 				898462051BF3382900FA4EB3 /* Foundation.framework in Frameworks */,
+				BF4364F978F22644BEB9DCCE /* libPods-CodeGenTestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32D3485611543665EE2742D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2FA36C7FBA2B392B48630FAD /* Pods-CodeGenTestTests.release.xcconfig */,
+				67D5C5EDCACDDE1429774492 /* Pods-CodeGenTestTests.debug.xcconfig */,
+				255E0017A6332D06D39EF45A /* Pods-CodeGenTest.debug.xcconfig */,
+				7387C899FC80CD8B5B2ACDAB /* Pods-CodeGenTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		898461D51BF3382900FA4EB3 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +115,7 @@
 				898462091BF3382900FA4EB3 /* CodeGenTestTests */,
 				898461E01BF3382900FA4EB3 /* Frameworks */,
 				898461DF1BF3382900FA4EB3 /* Products */,
+				32D3485611543665EE2742D9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +135,8 @@
 				898461E31BF3382900FA4EB3 /* CoreGraphics.framework */,
 				898461E51BF3382900FA4EB3 /* UIKit.framework */,
 				898462031BF3382900FA4EB3 /* XCTest.framework */,
+				CAD9777B81D95B9EFF44DD98 /* libPods-CodeGenTestTests.a */,
+				8B159F59C97E00EF24FD8A2E /* libPods-CodeGenTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -180,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 898462131BF3382900FA4EB3 /* Build configuration list for PBXNativeTarget "CodeGenTest" */;
 			buildPhases = (
+				785EEE1DC01B78E1A896A00A /* [CP] Check Pods Manifest.lock */,
 				898461DA1BF3382900FA4EB3 /* Sources */,
 				898461DB1BF3382900FA4EB3 /* Frameworks */,
 				898461DC1BF3382900FA4EB3 /* Resources */,
+				F1E01B4ABA5E5A9760F3CC39 /* [CP] Embed Pods Frameworks */,
+				4C31C86B41373F5F35D5E804 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 898462161BF3382900FA4EB3 /* Build configuration list for PBXNativeTarget "CodeGenTestTests" */;
 			buildPhases = (
+				BF88CC1EC946EB52CF4613FF /* [CP] Check Pods Manifest.lock */,
 				898461FE1BF3382900FA4EB3 /* Sources */,
 				898461FF1BF3382900FA4EB3 /* Frameworks */,
 				898462001BF3382900FA4EB3 /* Resources */,
+				9A86B9E429A6B7474DC3F9C1 /* [CP] Embed Pods Frameworks */,
+				AD24863B59FCA4C670831CD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,7 +248,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SL;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = StrongLoop;
 				TargetAttributes = {
 					898462011BF3382900FA4EB3 = {
@@ -266,6 +296,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C31C86B41373F5F35D5E804 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeGenTest/Pods-CodeGenTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		785EEE1DC01B78E1A896A00A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9A86B9E429A6B7474DC3F9C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeGenTestTests/Pods-CodeGenTestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD24863B59FCA4C670831CD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeGenTestTests/Pods-CodeGenTestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF88CC1EC946EB52CF4613FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F1E01B4ABA5E5A9760F3CC39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeGenTest/Pods-CodeGenTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		898461DA1BF3382900FA4EB3 /* Sources */ = {
@@ -347,13 +470,23 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -366,7 +499,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -386,20 +521,31 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -408,12 +554,14 @@
 		};
 		898462141BF3382900FA4EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 255E0017A6332D06D39EF45A /* Pods-CodeGenTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeGenTest/CodeGenTest-Prefix.pch";
 				INFOPLIST_FILE = "CodeGenTest/CodeGenTest-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.strongloop.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -421,12 +569,14 @@
 		};
 		898462151BF3382900FA4EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7387C899FC80CD8B5B2ACDAB /* Pods-CodeGenTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeGenTest/CodeGenTest-Prefix.pch";
 				INFOPLIST_FILE = "CodeGenTest/CodeGenTest-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.strongloop.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -434,6 +584,7 @@
 		};
 		898462171BF3382900FA4EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67D5C5EDCACDDE1429774492 /* Pods-CodeGenTestTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CodeGenTest.app/CodeGenTest";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -448,6 +599,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CodeGenTestTests/CodeGenTestTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.strongloop.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -456,6 +608,7 @@
 		};
 		898462181BF3382900FA4EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FA36C7FBA2B392B48630FAD /* Pods-CodeGenTestTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CodeGenTest.app/CodeGenTest";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -466,6 +619,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodeGenTest/CodeGenTest-Prefix.pch";
 				INFOPLIST_FILE = "CodeGenTestTests/CodeGenTestTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.strongloop.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
