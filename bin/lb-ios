@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var path = require('path');
-var semver = require('semver');
-var mkdirp = require('mkdirp');
-var optimist = require('optimist');
+let fs = require('fs');
+let path = require('path');
+let semver = require('semver');
+let mkdirp = require('mkdirp');
+let optimist = require('optimist');
 
-// var generator = require(loopback-sdk-ios-codegen);
-var generator = require('../lib/objc-codegen');
+// let generator = require(loopback-sdk-ios-codegen);
+let generator = require('../lib/objc-codegen');
 
-var argv = optimist
+let argv = optimist
   .usage('Generate iOS Objective-C client code for your LoopBack application.' +
     '\nUsage:' +
     '\n    $0 [options] path-to-app ios-client-dir-path' +
@@ -25,27 +25,27 @@ var argv = optimist
   .argv;
 
 try {
-  var appFile = path.resolve(argv._[0]);
-  var clientDir = path.resolve(argv._[1]);
-  var modelPrefix = argv['model-name-prefix'];
-  var verbose = argv['verbose'];
+  let appFile = path.resolve(argv._[0]);
+  let clientDir = path.resolve(argv._[1]);
+  let modelPrefix = argv['model-name-prefix'];
+  let verbose = argv['verbose'];
 
   console.error('Loading LoopBack app %j', appFile);
-  var app = require(appFile);
+  let app = require(appFile);
   assertLoopBackVersion(app);
   if (verbose) {
     console.error('Loopback version: ' + app.loopback.version);
   }
 
   console.error('Generating iOS models with prefix %j', modelPrefix);
-  var files = generator.objcModels(app, modelPrefix, verbose);
+  let files = generator.objcModels(app, modelPrefix, verbose);
 
   if (!fs.existsSync(clientDir)){
     mkdirp.mkdirP.sync(clientDir);
   }
 
-  for (var objcFileName in files) {
-    var filepath = path.resolve(clientDir, objcFileName);
+  for (let objcFileName in files) {
+    let filepath = path.resolve(clientDir, objcFileName);
     console.log('Writing: ' + filepath);
     if (verbose) {
       console.error('--');
